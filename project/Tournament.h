@@ -30,7 +30,7 @@ class Tournament
         ~Tournament();
         void InsertGod(std::string in_name, std::string in_attribute, int in_health, int in_attack, int in_agility);
         Gods *Fight(Gods *a, Gods *b);
-        void printGods();
+        void printGods(int tier_choice);
         void findGod(std::string in_name);
         void playerControl(Gods *a, Gods *b);
         void deleteGod(int index);
