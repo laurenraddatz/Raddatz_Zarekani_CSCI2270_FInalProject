@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1461462463 source:c:\users\user\dropbox\programming\data structures\project\main.cpp
+	"Tournament.h"
+	<iostream>
+	<fstream>
+	<string>
+	<sstream>
+
+1461461135 c:\users\user\dropbox\programming\data structures\project\tournament.h
+	<string>
+
+1461462408 source:c:\users\user\dropbox\programming\data structures\project\tournament.cpp
+	"Tournament.h"
+	<stdlib.h>
+	<string>
+	<iostream>
+
