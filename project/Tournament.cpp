@@ -200,4 +200,5 @@ void Tournament::deleteAll(Gods *node){
         deleteAll(node->right);
     //cout<<"Deleting: "<<node->name<<endl;
     delete node;
+}
 
