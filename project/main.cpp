@@ -7,7 +7,6 @@ using namespace std;
 
 int main()
 {
-    Tournament myTournament;
     string data;
     string name, attribute, health, attack, agility;
     ifstream inFile("gods.txt");
