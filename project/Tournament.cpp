@@ -3,21 +3,23 @@
 #include <stdlib.h>
 #include <iostream>
 #include <ctime> //for srand
+using namespace std;
 
 Tournament::Tournament(){
     for(int i = 0; i < godSize; i++){
         godList[i] = NULL;
     }
     srand(time(NULL)); //for random number generator
-
 }
 
 Tournament::~Tournament(){
 
 }
+
 Gods* Tournament::Fight(Gods *a, Gods *b){
     Gods fighterA = *a;
     Gods fighterB = *b;
+    float modifierA, modifierB;
     while(fighterA.health >= 0 and fighterB.health >= 0){ //both Gods still standing
         modifierA = (rand() % 100)/100.00; //percentage
         modifierB = (rand() % 100)/100.00; //percentage
@@ -61,8 +63,10 @@ void Tournament::InsertGod(std::string in_name, std::string in_attribute, int in
             }
     }
 }
+
 void Tournament::makeGod(string in_name, string in_attribute, string in_dominantStat, string in_inferiorStat){
-    deleteGod(rand() % 10);
+    int deleteIndex = rand() % 10;
+    deleteGod(deleteIndex);
     int agility, health, attack;
     agility = 0;
     health = 0;
@@ -89,6 +93,7 @@ void Tournament::makeGod(string in_name, string in_attribute, string in_dominant
         attack = rand() % 50 + 50;
     }
     InsertGod(in_name, in_attribute, health, attack, agility);
+    player = godList[deleteIndex];
     cout << "The Earth trembles, the air burns, and the Heavens rage. A new God has emerged." << endl;
     cout << "Their name is " << in_name << " of the attribute " << in_attribute << endl;
     cout << " of the attack " << attack << " of the health " << health << " and the agility " << agility << endl;
@@ -113,68 +118,68 @@ void Tournament::makeTree(){
     Gods *god6 = new Gods;
     Gods *god7 = new Gods;
     Gods *god8 = new Gods;
-    
+
     // connect the nodes
     root->parent = NULL;
     root->left = l1;
     root->right = r1;
-    
+
     l1->parent = root;
     l1->left = ll2;
     l1->right = lr2;
-    
+
     r1->parent = root;
     r1->left = rl2;
     r1->right = rr2;
-    
+
     ll2->parent = l1;
     ll2->left = god1;
     ll2->right = god2;
-    
+
     lr2->parent = l1;
     lr2->left = god3;
     lr2->right = god4;
-    
+
     rl2->parent = r1;
     rl2->left = god5;
     rl2->right = god6;
-    
+
     rr2->parent = r1;
     rr2->left = god7;
     rr2->right = god8;
-    
+
     god1->parent = ll2;
     god1->left = NULL;
     god1->right = NULL;
-    
+
     god2->parent = ll2;
     god2->left = NULL;
     god2->right = NULL;
-    
+
     god3->parent = lr2;
     god3->left = NULL;
     god3->right = NULL;
-    
+
     god4->parent = lr2;
     god4->left = NULL;
     god4->right = NULL;
-    
+
     god5->parent = rl2;
     god5->left = NULL;
     god5->right = NULL;
-    
+
     god6->parent = rl2;
     god6->left = NULL;
     god6->right = NULL;
-    
+
     god7->parent = rr2;
     god7->left = NULL;
     god7->right = NULL;
-    
+
     god8->parent = rr2;
     god8->left = NULL;
     god8->right = NULL;
-    
+
 }
 
 // Returns the root node for use in functions
@@ -182,7 +187,6 @@ Gods* Tournament::getRoot()
 {
     return root;
 }
-
 // the user chooses which tier to print (choice)
 void Tournament::printGods(int choice){
     cout << "Gods in this tier:" << endl;
@@ -202,7 +206,6 @@ void Tournament::printGods(int choice){
         }
     }
 }
-
 // Clear the tournament bracket, input the root node
 void Tournament::deleteAll(Gods *node){
     if(node->left != NULL)
