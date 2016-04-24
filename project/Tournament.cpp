@@ -172,6 +172,26 @@ Gods* Tournament::getRoot()
     return root;
 }
 
+// the user chooses which tier to print (choice)
+void Tournament::printGods(int choice){
+    cout << "Gods in this tier:" << endl;
+    if(choice == 1){
+        for(int i = 0; i < 8; i++){
+            cout << godList[i] << endl;
+        }
+    }
+    else if(choice == 2){
+        for(int i = 0; i < 4; i++){
+            cout << godList2[i] << endl;
+        }
+    }
+    else if(choice == 3){
+        for(int i = 0; i < 2; i++){
+            cout << godList3[i] << endl;
+        }
+    }
+}
+
 // Clear the tournament bracket, input the root node
 void Tournament::deleteAll(Gods *node){
     if(node->left != NULL)
