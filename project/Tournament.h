@@ -28,6 +28,11 @@ class Tournament
         Gods *Fight(Gods *a, Gods *b);
         void printGods();
         void findGod(std::string in_name);
+        void playerControl(Gods *a, Gods *b);
+        void deleteGod(Gods *a);
+        void manualFight(Gods *a, Gods *b);
+        void deleteAll();
+        void makeGod(std::string in_name, std::string in_attribute, std::string in_dominantStat);
 
     protected:
 
