@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1461461586 source:c:\users\lauren\documents\github\raddatz_zarekani_csci2270_finalproject\tournament\main.cpp
+	"Tournament.h"
+	<iostream>
+	<fstream>
+	<string>
+	<sstream>
+
+1461461586 c:\users\lauren\documents\github\raddatz_zarekani_csci2270_finalproject\tournament\include\tournament.h
+	<string>
+
+1461461586 source:c:\users\lauren\documents\github\raddatz_zarekani_csci2270_finalproject\tournament\src\tournament.cpp
+	"Tournament.h"
+	<string>
+	<iostream>
+

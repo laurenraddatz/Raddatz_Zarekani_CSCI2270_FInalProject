@@ -1,8 +1,0 @@
-Zeus,lightning,100,50,50
-Posiden,water,100,50,50
-Hades,fire,100,50,50
-Thor,lightning,100,50,50
-Loki,normal,100,50,50
-Shiva,earth,100,50,50
-Aphrodite,100,50,50
-Ares,normal,100,50,50
