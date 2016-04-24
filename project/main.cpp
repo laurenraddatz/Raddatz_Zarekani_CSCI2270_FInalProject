@@ -8,6 +8,7 @@ using namespace std;
 int main()
 {
     Tournament newTournament;
+    bool found = false;
     string data;
     string userInput, userInput2;
     string name, attribute, health, attack, agility, dominant, inferior;
@@ -54,7 +55,13 @@ int main()
                 }
                 newTournament.makeGod(name, attribute, dominant, inferior);
             }else if(userInput2 == "1"){ //chose god
-                //find god
+                newTournament.printGods(1);
+                while(found == false){
+                    cout << "Choose your Champion" << endl;
+                    getline(cin, name);
+                    found = newTournament.findGod(name);
+                }
+                cout << "You have chosen " << name << endl;
             }
         }
      }
