@@ -6,7 +6,7 @@
 struct Gods{
 	std::string name, attribute;
 	int health, attack, agility;
-	Gods* parent, left, right;
+	Gods  *parent, *left, *right;
 
 	Gods(){};
 	Gods(std::string in_name, std::string in_attribute, int in_health, int in_attack, int in_agility)
@@ -35,7 +35,7 @@ class Tournament
         void playerControl(Gods *a, Gods *b);
         void deleteGod(Gods *a);
         void manualFight(Gods *a, Gods *b);
-        void deleteAll();
+        void deleteAll(Gods *node);
         void makeGod(std::string in_name, std::string in_attribute, std::string in_dominantStat);
 
     protected:
