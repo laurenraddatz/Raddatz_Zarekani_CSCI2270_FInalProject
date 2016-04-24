@@ -33,6 +33,9 @@ Gods* Tournament::Fight(Gods *a, Gods *b){
         return b;
     }
 }
+void Tournament::deleteGod(int index){
+    godList[index] = NULL;
+}
 void Tournament::InsertGod(std::string in_name, std::string in_attribute, int in_health, int in_attack, int in_agility){
     Gods *newGod = new Gods(in_name, in_attribute, in_health, in_attack, in_agility);
         int initialI = rand() % 10;
@@ -47,7 +50,40 @@ void Tournament::InsertGod(std::string in_name, std::string in_attribute, int in
             }
     }
 }
+void Tournament::makeGod(string in_name, string in_attribute, string in_dominantStat, string in_inferiorStat){
+    deleteGod(rand() % 10);
+    int agility, health, attack;
+    agility = 0;
+    health = 0;
+    attack = 0;
+    if(in_dominantStat == "agility"){
+        agility = rand() % 45 + 80; //in between 80 and 125
+    }else if(in_dominantStat == "health"){
+        health = rand() % 45 + 80;
+    }else if(in_dominantStat == "attack"){
+        attack = rand() % 45 + 80;
+    }
+    if(in_inferiorStat == "agility"){
+        agility = rand() % 100 + 1; //in between 1 and 100
+    }else if(in_inferiorStat == "health"){
+        health = rand() % 100 + 1;
+    }else if(in_inferiorStat == "attack"){
+        attack = rand() % 100 + 1;
+    }
+    if(agility == 0){
+        agility = rand() % 50 + 50; //in between 50 and 100
+    }else if(health == 0){
+        health = rand() % 50 + 50;
+    }else if(attack == 0){
+        attack = rand() % 50 + 50;
+    }
+    InsertGod(in_name, in_attribute, health, attack, agility);
+    cout << "The Earth trembles, the air burns, and the Heavens rage. A new God has emerged." << endl;
+    cout << "Their name is " << in_name << " of the attribute " << in_attribute << endl;
+    cout << " of the attack " << attack << " of the health " << health << " and the agility " << agility << endl;
 
+
+}
 void Tournament::makeTree(){
     // root is already a Gods object
     // very iterative :(
