@@ -1,13 +1,15 @@
 #include "Tournament.h"
-
 #include <string>
+#include <stdlib.h>
 #include <iostream>
-
+#include <ctime> //for srand
 
 Tournament::Tournament(){
     for(int i = 0; i < godSize; i++){
         godList[i] = NULL;
     }
+    srand(time(NULL)); //for random number generator
+
 }
 
 Tournament::~Tournament(){
@@ -36,13 +38,22 @@ Gods* Tournament::Fight(Gods *a, Gods *b){
 void Tournament::deleteGod(int index){
     godList[index] = NULL;
 }
+bool Tournament::findGod(std::string in_name){
+    for(int i = 0; i < godSize; i++){
+        if(godList[i]->name == in_name){
+            player = godList[i];
+            return true;
+        }
+    }
+    return false;
+}
 void Tournament::InsertGod(std::string in_name, std::string in_attribute, int in_health, int in_attack, int in_agility){
     Gods *newGod = new Gods(in_name, in_attribute, in_health, in_attack, in_agility);
-        int initialI = rand() % 10;
+        int initialI = rand() % 7;
         for(int i = initialI; i < godSize + initialI ; i++){
             if(godList[i] == NULL){
                 godList[i] = newGod;
-               // cout << godList[i]->name << " " << i << endl;
+                //cout << godList[i]->name << " " << i << endl;
                 break;
             }
             if(i >= godSize){
