@@ -37,6 +37,8 @@ class Tournament
         void manualFight(Gods *a, Gods *b);
         void deleteAll(Gods *node);
         void makeGod(std::string in_name, std::string in_attribute, std::string in_dominantStat);
+        Gods* getRoot();
+        void makeTree(Gods* node);
 
     protected:
 
