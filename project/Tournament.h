@@ -48,6 +48,7 @@ class Tournament
         Gods *godList2[4];
         Gods *godList3[2];
         Gods *root;
+        Gods *player;
 };
 
 #endif // TOURNAMENT_H
