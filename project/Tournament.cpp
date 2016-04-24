@@ -177,17 +177,17 @@ void Tournament::printGods(int choice){
     cout << "Gods in this tier:" << endl;
     if(choice == 1){
         for(int i = 0; i < 8; i++){
-            cout << godList[i] << endl;
+            cout << godList[i]->name << endl;
         }
     }
     else if(choice == 2){
         for(int i = 0; i < 4; i++){
-            cout << godList2[i] << endl;
+            cout << godList2[i]->name << endl;
         }
     }
     else if(choice == 3){
         for(int i = 0; i < 2; i++){
-            cout << godList3[i] << endl;
+            cout << godList3[i]->name << endl;
         }
     }
 }
