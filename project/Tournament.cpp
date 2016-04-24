@@ -48,4 +48,12 @@ void Tournament::InsertGod(std::string in_name, std::string in_attribute, int in
     }
 }
 
+// Clear the tournament bracket, input the root node
+void Tournament::deleteAll(Gods *node){
+    if(node->left != NULL)
+        DeleteAll(node->left);
+    if(node->right != NULL)
+        DeleteAll(node->right);
+    //cout<<"Deleting: "<<node->name<<endl;
+    delete node;
 
