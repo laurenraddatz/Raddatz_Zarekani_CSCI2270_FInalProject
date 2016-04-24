@@ -45,6 +45,8 @@ class Tournament
     private:
         int godSize = 8;
         Gods *godList[8];
+        Gods *godList2[4];
+        Gods *godList3[2];
         Gods *root;
 };
 
