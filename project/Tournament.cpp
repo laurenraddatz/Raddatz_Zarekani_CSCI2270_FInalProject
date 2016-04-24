@@ -139,9 +139,9 @@ Gods* Tournament::getRoot()
 // Clear the tournament bracket, input the root node
 void Tournament::deleteAll(Gods *node){
     if(node->left != NULL)
-        DeleteAll(node->left);
+        deleteAll(node->left);
     if(node->right != NULL)
-        DeleteAll(node->right);
+        deleteAll(node->right);
     //cout<<"Deleting: "<<node->name<<endl;
     delete node;
 
