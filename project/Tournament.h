@@ -6,6 +6,7 @@
 struct Gods{
 	std::string name, attribute;
 	int health, attack, agility;
+	Gods* parent, left, right;
 
 	Gods(){};
 	Gods(std::string in_name, std::string in_attribute, int in_health, int in_attack, int in_agility)
@@ -15,6 +16,9 @@ struct Gods{
 		health = in_health;
 		attack = in_attack;
 		agility = in_agility;
+		parent = NULL;
+        	left = NULL;
+        	right = NULL;
 	}
 
 };
