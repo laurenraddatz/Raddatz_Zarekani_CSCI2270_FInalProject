@@ -304,6 +304,7 @@ Gods* Tournament::manualFight(Gods *a, Gods *b){
 }
 void Tournament::runTournament(){
     int countMatch = 0;
+    round = 0;
     Gods * winner;
     Gods **godListTemp;
     cout << "+++The Tournament Will Now Begin+++" << endl;
@@ -337,6 +338,9 @@ void Tournament::runTournament(){
                 }else{
                     *winner = *manualFight(godListTemp[i+1],godListTemp[i]);
                 }
+                if(godListTemp[i]->name == winner->name){
+                    player = winner;
+                }                
                 cout << winner->name << " is the winner" << endl;
                 winner->left = godListTemp[i];
                 godListTemp[i]->parent = winner;
