@@ -50,9 +50,13 @@ int main()
                     getline(cin, dominant);
                 }
                 inferior = "";
-                while (inferior != "attack" and inferior != "health" and inferior != "agility" and inferior!=dominant){ //make sure player choses available stat
+                while (inferior != "attack" and inferiacor != "health" and inferior != "agility"){ //make sure player choses available stat
                     cout << "Choose Your God's inferior stat (attack, health, or agility). Your inferior stat must be different than your dominant stat." << endl;
                     getline(cin, inferior);
+                    while(inferior==dominant){
+                        cout << "Your dominant and inferior stats are the same. Please choose a different inferior stat (attack, health, or agility)" << endl;
+                        getline(cin, dominant);
+                    }
                 }
                 newTournament.makeGod(name, attribute, dominant, inferior);
             }else if(userInput2 == "1"){ //choose god
