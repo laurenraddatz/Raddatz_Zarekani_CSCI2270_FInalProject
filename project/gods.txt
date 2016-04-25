@@ -1,5 +1,5 @@
 Zeus,lightning,100,50,50
-Poseiden,water,100,50,50
+Poseidon,water,100,50,50
 Hades,fire,100,50,50
 Thor,lightning,100,50,50
 Loki,normal,100,50,50
