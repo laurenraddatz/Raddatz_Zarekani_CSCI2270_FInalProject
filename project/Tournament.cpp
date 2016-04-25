@@ -107,87 +107,6 @@ void Tournament::makeGod(string in_name, string in_attribute, string in_dominant
 
 
 }
-void Tournament::makeTree(){
-    // root is already a Gods object
-    // very iterative :(
-    // create each node
-    Gods *l1 = new Gods;
-    Gods *r1 = new Gods;
-    Gods *ll2 = new Gods;
-    Gods *lr2 = new Gods;
-    Gods *rl2 = new Gods;
-    Gods *rr2 = new Gods;
-    Gods *god1 = new Gods;
-    Gods *god2 = new Gods;
-    Gods *god3 = new Gods;
-    Gods *god4 = new Gods;
-    Gods *god5 = new Gods;
-    Gods *god6 = new Gods;
-    Gods *god7 = new Gods;
-    Gods *god8 = new Gods;
-    
-    // connect the nodes
-    root->parent = NULL;
-    root->left = l1;
-    root->right = r1;
-    
-    l1->parent = root;
-    l1->left = ll2;
-    l1->right = lr2;
-    
-    r1->parent = root;
-    r1->left = rl2;
-    r1->right = rr2;
-    
-    ll2->parent = l1;
-    ll2->left = god1;
-    ll2->right = god2;
-    
-    lr2->parent = l1;
-    lr2->left = god3;
-    lr2->right = god4;
-    
-    rl2->parent = r1;
-    rl2->left = god5;
-    rl2->right = god6;
-    
-    rr2->parent = r1;
-    rr2->left = god7;
-    rr2->right = god8;
-    
-    god1->parent = ll2;
-    god1->left = NULL;
-    god1->right = NULL;
-    
-    god2->parent = ll2;
-    god2->left = NULL;
-    god2->right = NULL;
-    
-    god3->parent = lr2;
-    god3->left = NULL;
-    god3->right = NULL;
-    
-    god4->parent = lr2;
-    god4->left = NULL;
-    god4->right = NULL;
-    
-    god5->parent = rl2;
-    god5->left = NULL;
-    god5->right = NULL;
-    
-    god6->parent = rl2;
-    god6->left = NULL;
-    god6->right = NULL;
-    
-    god7->parent = rr2;
-    god7->left = NULL;
-    god7->right = NULL;
-    
-    god8->parent = rr2;
-    god8->left = NULL;
-    god8->right = NULL;
-    
-}
 
 // Returns the root node for use in functions
 Gods* Tournament::getRoot()
@@ -237,6 +156,47 @@ void Tournament::readFile(){
         getline(SS, agility, ',');
         InsertGod(name, attribute, atoi(health.c_str()), atoi(attack.c_str()) , atoi(agility.c_str()));
     }
+}
+void Tournament::findGodHistory(string name, Gods* temp){
+    int countingKids = 0;
+    if(temp == NULL){
+        for(int i = 0; i < godSize; i++){
+            if(godList[i]->name == name){
+                player = godList[i];
+                cout << godList[i]->name << " Attribute: " << godList[i]->attribute << " Health: " << godList[i]->health << " Attack: " << godList[i]->attack << " Agility: " << godList[i]->agility << endl;
+                cout << "This Deity has not fought yet. Start a new tournament to see what this immortal is made of!" << endl;
+            }
+        }
+        goto label;
+    }
+    if(temp->name == name){
+        cout << temp->name << " Attribute: " << temp->attribute << " Health: " << temp->health << " Attack: " << temp->attack << " Agility: " << temp->agility << endl;
+        countingKids++;
+        while(temp->left != NULL){
+            countingKids++;
+            if(temp->left->name == name){
+                temp = temp->left;
+            }else if(temp->right->name == name){
+                temp = temp->right;
+            }
+        }
+        int whatRound = 1;
+        while(temp->parent != NULL and countingKids > 0){
+            temp = temp->parent;
+            cout << "Round " << whatRound << " " << temp->left->name << " fought " << temp->right->name << endl;
+            cout << temp->name << " was the victor!" << endl;
+            countingKids--;
+            whatRound++;
+        }
+        goto label;
+    }
+    if (temp->left != NULL){
+        findGodHistory(name, temp->left);
+    }
+     if (temp->right != NULL){
+        findGodHistory(name, temp->right);
+    }
+    label:;
 }
 void Tournament::InitializeTourny(){
     godSize = 8;
