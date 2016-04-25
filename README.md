@@ -1,22 +1,32 @@
 # CSCI2270 Final Project: Tournament of the Gods
 
-# Project Summary
-Our project will simulate a mythological tournament. We will read in a text document of different Gods complete with their attributes. The player will pick a God to play. They will have a small amount of influence over their champion. The rest of the fights will be settled automatically. After each round, a new level of a tree will be created. This tree will be created from the bottom up. At the end of the tournament we will be able to traverse the tree and see the result of each fight.
+## Project Summary
+Our project is a mythologial tournament that utilizes binary trees. There is a set list of Gods, with different attributes, that will fight in a tournament. The player has the option of fighting in the tournament, or watching it from the audience. If the player decides to play, then they can pick a preset God to play as, or they can create their own. They will then be able to choose the moves for their God or 'champion', and will have control over their champion until they die. After the player's champion dies, the rest of the tournament will be played automatically.
 
-# How to Run
-With Tournament.cpp and Tournament.h in the same directory as main.cpp and gods.txt, main.cpp can be run to start the start the game. It must be run using C++11 or higher. To have Code::Blocks use C++11, follow [this] (http://stackoverflow.com/questions/18174988/how-can-i-add-c11-support-to-codeblocks-compiler) guide.
+After each round, a new level of a tree will be created. This tree will be created from the bottom up. At the end of the tournament we will be able to traverse the tree and see the result of each fight.
 
-# Dependencies 
+Attributes:
+Each God is assigned an attribute (normal, fire, water, earth, or lightning). If the player chooses to create a God, then they get to choose their God's attribute. 
+  Normal - no advantage or disadvantage against any God.
+  Fire - gives an advantage when playing against an Earth God, but a disadvantage against a Water God.
+  Water - gives an advantage when playing against a Fire God, but a disadvantage against a Lightning God.
+  Earth - gives an advantage when playing against a Lightning God, but a disadvantage against a Fire God.
+  Lightning - gives an advantage when playing against a Water God, but a disadvantage against an Earth God.
+
+## How to Run
+With Tournament.cpp, Tournament.h, and main.cpp in a project together, with gods.txt in the same directory, main.cpp can be run to start the start the game. 
+
+## Dependencies 
 This program has no third-party dependencies.
 
-# System Requirements
+## System Requirements
 This program will run with Windows, Mac, or Linux operating systems, but requires the use of C++11 or higher.
 
-# Group Members
+## Group Members
 Lauren Raddatz and Mehdi Zarekani
 
-#Contributors
+## Contributors
 None
 
-# Open issues/bugs
+## Open issues/bugs
 None that we are aware of.
