@@ -235,7 +235,7 @@ void Tournament::readFile(){
         getline(SS, health, ',');
         getline(SS, attack, ',');
         getline(SS, agility, ',');
-        InsertGod(name, attribute, stoi(health), stoi(attack) , stoi(agility));
+        InsertGod(name, attribute, atoi(health.c_str()), atoi(attack.c_str()) , atoi(agility.c_str()));
     }
 }
 void Tournament::InitializeTourny(){
