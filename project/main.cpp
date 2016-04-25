@@ -26,10 +26,11 @@ int main()
     }
     cout << "Welcome to the Divine Tournament" << endl;
     cout << "Immortal blood will be shed today" << endl;
-     while(userInput != "2"){
+     while(userInput != "3"){
         cout << "======Main Menu======" << endl;
         cout << "1. Choose Your Champion" << endl;
-        cout << "2. Quit" << endl;
+        cout << "2. Join the Audience" << endl;
+        cout << "3. Quit" << endl;
         getline(cin, userInput);
 
         if(userInput == "1"){
@@ -68,6 +69,8 @@ int main()
                 }
                 cout << "You have chosen " << name << endl;
             }
+        }else if(userInput == "2"){
+            newTournament.runTournament();
         }
      }
     return 0;
