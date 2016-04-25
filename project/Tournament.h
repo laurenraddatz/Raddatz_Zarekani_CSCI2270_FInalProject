@@ -39,14 +39,13 @@ class Tournament
         void makeGod(std::string in_name, std::string in_attribute, std::string in_dominantStat, std::string in_inferiorStat);
         Gods* getRoot();
         void makeTree();
+        void runTournament();
 
     protected:
 
     private:
         int godSize = 8;
         Gods *godList[8];
-        Gods *godList2[4];
-        Gods *godList3[2];
         Gods *root;
         Gods *player;
 };
