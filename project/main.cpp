@@ -51,7 +51,7 @@ int main()
                     getline(cin, dominant);
                 }
                 inferior = "";
-                while (inferior != "attack" and inferiacor != "health" and inferior != "agility"){ //make sure player choses available stat
+                while (inferior != "attack" and inferior != "health" and inferior != "agility"){ //make sure player choses available stat
                     cout << "Choose Your God's inferior stat (attack, health, or agility). Your inferior stat must be different than your dominant stat." << endl;
                     getline(cin, inferior);
                     while(inferior==dominant){
