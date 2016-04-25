@@ -62,14 +62,14 @@ bool Tournament::findGod(std::string in_name){
 }
 void Tournament::InsertGod(std::string in_name, std::string in_attribute, int in_health, int in_attack, int in_agility){
     Gods *newGod = new Gods(in_name, in_attribute, in_health, in_attack, in_agility);
-        int initialI = rand() % 7;
+        int initialI = rand() % 8;
         for(int i = initialI; i < godSize + initialI ; i++){
+            if(i == godSize){
+                i = 0;
+            }
             if(godList[i] == NULL){
                 godList[i] = newGod;
                 break;
-            }
-            if(i >= godSize){
-                i = 0;
             }
     }
 }
