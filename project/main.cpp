@@ -57,6 +57,8 @@ int main()
                 }
                 found = false; //reset found
                 cout << "You have chosen " << name << endl;
+                newTournament.runTournament();
+
             }
         }else if(userInput == "2"){
             newTournament.runTournament();
