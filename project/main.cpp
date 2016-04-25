@@ -41,21 +41,21 @@ int main()
                 getline(cin, name);
                 attribute = "";
                 while (attribute != "normal" and attribute != "lightning" and attribute != "fire" and attribute != "water" and attribute != "earth" ){ //make sure player choses available attribute
-                    cout << "Choose Your God's Attribute(normal, lightning, fire, water, earth)" << endl;
+                    cout << "Choose Your God's Attribute (normal, lightning, fire, water, or earth)" << endl;
                     getline(cin, attribute);
                 }
                 dominant = "";
                 while (dominant != "attack" and dominant != "health" and dominant != "agility"){ //make sure player choses available stat
-                    cout << "Choose Your God's dominant stat(attack, health, or agility)" << endl;
+                    cout << "Choose Your God's dominant stat (attack, health, or agility)" << endl;
                     getline(cin, dominant);
                 }
                 inferior = "";
-                while (inferior != "attack" and inferior != "health" and inferior != "agility"){ //make sure player choses available stat
-                    cout << "Choose Your God's inferior stat(attack, health, or agility)" << endl;
+                while (inferior != "attack" and inferior != "health" and inferior != "agility" and inferior!=dominant){ //make sure player choses available stat
+                    cout << "Choose Your God's inferior stat (attack, health, or agility). Your inferior stat must be different than your dominant stat." << endl;
                     getline(cin, inferior);
                 }
                 newTournament.makeGod(name, attribute, dominant, inferior);
-            }else if(userInput2 == "1"){ //chose god
+            }else if(userInput2 == "1"){ //choose god
                 newTournament.printGods(1);
                 while(found == false){
                     cout << "Choose your Champion" << endl;
