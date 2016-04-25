@@ -304,7 +304,6 @@ Gods* Tournament::manualFight(Gods *a, Gods *b){
 }
 void Tournament::runTournament(){
     int countMatch = 0;
-    int round = 0;
     Gods * winner;
     Gods **godListTemp;
     cout << "+++The Tournament Will Now Begin+++" << endl;
