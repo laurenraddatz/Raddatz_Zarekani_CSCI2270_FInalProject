@@ -10,20 +10,8 @@ int main()
 {
     Tournament newTournament;
     bool found = false;
-    string data;
     string userInput, userInput2;
     string name, attribute, health, attack, agility, dominant, inferior;
-    ifstream inFile("gods.txt");
-    while(getline(inFile, data)){
-        stringstream SS(data);
-        string temp;
-        getline(SS, name, ',');
-        getline(SS, attribute, ',');
-        getline(SS, health, ',');
-        getline(SS, attack, ',');
-        getline(SS, agility, ',');
-        newTournament.InsertGod(name, attribute, atoi(health.c_str()), atoi(attack.c_str()), atoi(agility.c_str()));
-    }
     cout << "Welcome to the Divine Tournament" << endl;
     cout << "Immortal blood will be shed today" << endl;
      while(userInput != "3"){
@@ -67,6 +55,7 @@ int main()
                     getline(cin, name);
                     found = newTournament.findGod(name);
                 }
+                found = false; //reset found
                 cout << "You have chosen " << name << endl;
             }
         }else if(userInput == "2"){
