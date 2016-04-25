@@ -235,20 +235,35 @@ void Tournament::runTournament(){
             winner = new Gods();
             if(godListTemp[i] != player and godListTemp[i+1] != player){
                 *winner = *Fight(godListTemp[i],godListTemp[i+1]);
+                cout << winner << endl;
                 cout << godListTemp[i]->name << " vs " << godListTemp[i+1]->name << endl;
                 cout << winner->name << " is the winner" << endl;
                 winner->left = godListTemp[i];
+                godListTemp[i]->parent = winner;
                 winner->right = godListTemp[i+1];
+                godListTemp[i+1]->parent = winner;
                 godList[countMatch] = winner;
             }else{
                 cout << "Player Match, to be filled later" << endl;
                 *winner = *Fight(godListTemp[i],godListTemp[i+1]);
                 cout << godListTemp[i]->name << " vs " << godListTemp[i+1]->name << endl;
                 cout << winner->name << " is the winner" << endl;
+                winner->left = godListTemp[i];
+                godListTemp[i]->parent = winner;
+                winner->right = godListTemp[i+1];
+                godListTemp[i+1]->parent = winner;
                 godList[countMatch] = winner;
             }
             countMatch++;
         }
+        for(int i = 0; i < godSize; i++){
+            cout << godList[i]->left->name << " look here" << endl;
+        }
         round++;
+    }
+    Gods *temp = godList[0];
+    while(temp != NULL){
+    cout << temp->name << endl;
+    temp = temp->left;
     }
 }
