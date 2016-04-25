@@ -214,3 +214,41 @@ void Tournament::deleteAll(Gods *node){
     delete node;
 }
 
+void Tournament::runTournament(){
+    int countMatch = 0;
+    Gods * winner;
+    Gods **godListTemp;
+    cout << "The Tournament Will Now Begin" << endl;
+    for (int i = 0; i < godSize; i = i + 2){
+        cout << godList[i]->name << " vs " << godList[i+1]->name << endl;
+    }
+    for(int j = 0; j < 3; j++){
+        godListTemp = new Gods*[godSize];
+        for (int i = 0; i < godSize; i++){
+            godListTemp[i] = godList[i];
+        }
+        godSize = godSize / 2;
+        *godList = new Gods[godSize];
+        cout << "Round " << round << endl;
+        countMatch = 0;
+        for (int i = 0; i < godSize*2; i = i + 2){
+            winner = new Gods();
+            if(godListTemp[i] != player and godListTemp[i+1] != player){
+                *winner = *Fight(godListTemp[i],godListTemp[i+1]);
+                cout << godListTemp[i]->name << " vs " << godListTemp[i+1]->name << endl;
+                cout << winner->name << " is the winner" << endl;
+                winner->left = godListTemp[i];
+                winner->right = godListTemp[i+1];
+                godList[countMatch] = winner;
+            }else{
+                cout << "Player Match, to be filled later" << endl;
+                *winner = *Fight(godListTemp[i],godListTemp[i+1]);
+                cout << godListTemp[i]->name << " vs " << godListTemp[i+1]->name << endl;
+                cout << winner->name << " is the winner" << endl;
+                godList[countMatch] = winner;
+            }
+            countMatch++;
+        }
+        round++;
+    }
+}
