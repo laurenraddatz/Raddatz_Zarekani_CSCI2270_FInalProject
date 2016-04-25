@@ -16,14 +16,15 @@ int main()
     cout << "Immortal blood will be shed today" << endl;
      while(userInput != "3"){
         cout << "======Main Menu======" << endl;
-        cout << "1. Choose Your Champion" << endl;
-        cout << "2. Join the Audience" << endl;
+        cout << "1. Start New Tournament" << endl;
+        cout << "2. Find God" << endl;
         cout << "3. Quit" << endl;
         getline(cin, userInput);
 
         if(userInput == "1"){
             cout << "1. Choose a God" << endl;
             cout << "2. Create a God" << endl;
+            cout << "3. Join the Audience" << endl;
             getline(cin, userInput2);
             if(userInput2 == "2"){ //make god
                 cout << "Choose Your God's Name" << endl;
@@ -59,9 +60,18 @@ int main()
                 cout << "You have chosen " << name << endl;
                 newTournament.runTournament();
 
-            }
+            }else if(userInput2 == "3"){
+                newTournament.player = NULL;
+                newTournament.runTournament();
+            }            
         }else if(userInput == "2"){
-            newTournament.runTournament();
+            cout << "What God?" << endl;
+            getline(cin, name);
+            if(newTournament.findGod(name)){
+                newTournament.findGodHistory(name, newTournament.root);
+            }else{
+                cout << "Enter valid Deity" << endl;
+            }
         }
      }
     return 0;
