@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <ctime> //for srand
+using namespace std;
 
 Tournament::Tournament(){
     for(int i = 0; i < godSize; i++){
@@ -18,6 +19,7 @@ Tournament::~Tournament(){
 Gods* Tournament::Fight(Gods *a, Gods *b){
     Gods fighterA = *a;
     Gods fighterB = *b;
+    float modifierA, modifierB;
     while(fighterA.health >= 0 and fighterB.health >= 0){ //both Gods still standing
         modifierA = (rand() % 100)/100.00; //percentage
         modifierB = (rand() % 100)/100.00; //percentage
@@ -53,7 +55,6 @@ void Tournament::InsertGod(std::string in_name, std::string in_attribute, int in
         for(int i = initialI; i < godSize + initialI ; i++){
             if(godList[i] == NULL){
                 godList[i] = newGod;
-                //cout << godList[i]->name << " " << i << endl;
                 break;
             }
             if(i >= godSize){
