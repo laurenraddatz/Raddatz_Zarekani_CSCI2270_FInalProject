@@ -10,7 +10,7 @@ With Tournament.cpp and Tournament.h in the same directory as main.cpp and gods.
 This program has no third-party dependencies.
 
 # System Requirements
-This program will run with any operating system, but requires the use of C++11 or higher.
+This program will run with Windows, Mac, or Linux operating systems, but requires the use of C++11 or higher.
 
 # Group Members
 Lauren Raddatz and Mehdi Zarekani
