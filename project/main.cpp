@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <stdlib.h> // for atoi
 using namespace std;
 
 int main()
@@ -21,7 +22,7 @@ int main()
         getline(SS, health, ',');
         getline(SS, attack, ',');
         getline(SS, agility, ',');
-        newTournament.InsertGod(name, attribute, stoi(health), stoi(attack) , stoi(agility));
+        newTournament.InsertGod(name, attribute, atoi(health.c_str()), atoi(attack.c_str()), atoi(agility.c_str()));
     }
     cout << "Welcome to the Divine Tournament" << endl;
     cout << "Immortal blood will be shed today" << endl;
