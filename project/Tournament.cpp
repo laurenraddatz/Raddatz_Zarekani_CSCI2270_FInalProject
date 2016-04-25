@@ -23,6 +23,18 @@ Gods* Tournament::Fight(Gods *a, Gods *b){
     while(fighterA.health >= 0 and fighterB.health >= 0){ //both Gods still standing
         modifierA = (rand() % 100)/100.00; //percentage
         modifierB = (rand() % 100)/100.00; //percentage
+        if(fighterA.attribute != "normal" and fighterB.attribute != "normal"){
+            // case where fighterA gets advantage
+            if((fighterA.attribute == "water" and fighterB.attribute == "fire") or (fighterA.attribute == "lightning" and fighterB.attribute == "water") or (fighterA.attribute == "earth" and fighterB.attribute == "lightning") or (fighterA.attribute == "fire" and fighterB.attribute == "earth")){
+                modifierA += .2;
+                modifierB -= .2;
+            }
+            // case where fighterB gets advantage
+            else if((fighterB.attribute == "water" and fighterA.attribute == "fire") or (fighterB.attribute == "lightning" and fighterA.attribute == "water") or (fighterB.attribute == "earth" and fighterA.attribute == "lightning") or (fighterB.attribute == "fire" and fighterA.attribute == "earth")){
+                modifierB += .2;
+                modifierA -= .2;
+            }
+        }  
         if(fighterB.agility * modifierB - fighterA.agility * modifierA > 5){ //whether the attack misses or hits
             fighterA.health = fighterA.health - (fighterB.attack * modifierB);
         }
@@ -292,6 +304,7 @@ Gods* Tournament::manualFight(Gods *a, Gods *b){
 }
 void Tournament::runTournament(){
     int countMatch = 0;
+    int round = 0;
     Gods * winner;
     Gods **godListTemp;
     cout << "+++The Tournament Will Now Begin+++" << endl;
