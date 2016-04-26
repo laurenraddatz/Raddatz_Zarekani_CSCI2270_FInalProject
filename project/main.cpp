@@ -11,7 +11,7 @@ int main()
     Tournament newTournament;
     bool found = false;
     string userInput, userInput2;
-    string name, attribute, health, attack, agility, dominant, inferior;
+    string name, attribute, health, attack, agility, dominant, inferior, speech;
     cout << "Welcome to the Divine Tournament" << endl;
     cout << "Immortal blood will be shed today" << endl;
      while(true){
@@ -48,7 +48,9 @@ int main()
                         getline(cin, dominant);
                     }
                 }
-                newTournament.makeGod(name, attribute, dominant, inferior);
+                cout << "Finally , choose your God's winning speech" << endl;
+                getline(cin, speech);
+                newTournament.makeGod(name, attribute, dominant, inferior, speech);                
             }else if(userInput2 == "1"){ //choose god
                 newTournament.printGods(1);
                 while(found == false){
