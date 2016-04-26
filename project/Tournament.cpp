@@ -60,8 +60,8 @@ bool Tournament::findGod(std::string in_name){
     }
     return false;
 }
-void Tournament::InsertGod(std::string in_name, std::string in_attribute, int in_health, int in_attack, int in_agility){
-    Gods *newGod = new Gods(in_name, in_attribute, in_health, in_attack, in_agility);
+void Tournament::InsertGod(std::string in_name, std::string in_attribute, int in_health, int in_attack, int in_agility, std::string in_speech){
+    Gods *newGod = new Gods(in_name, in_attribute, in_health, in_attack, in_agility, in_speech);
         int initialI = rand() % 8;
         for(int i = initialI; i < godSize + initialI ; i++){
             if(i == godSize){
@@ -73,7 +73,7 @@ void Tournament::InsertGod(std::string in_name, std::string in_attribute, int in
             }
     }
 }
-void Tournament::makeGod(string in_name, string in_attribute, string in_dominantStat, string in_inferiorStat){
+void Tournament::makeGod(string in_name, string in_attribute, string in_dominantStat, string in_inferiorStat, string speech){
     deleteGod(rand() % 10);
     int agility, health, attack;
     agility = 0;
@@ -100,7 +100,7 @@ void Tournament::makeGod(string in_name, string in_attribute, string in_dominant
     }else if(attack == 0){
         attack = rand() % 50 + 50;
     }
-    InsertGod(in_name, in_attribute, health, attack, agility);
+    InsertGod(in_name, in_attribute, health, attack, agility, speech);
     cout << "The Earth trembles, the air burns, and the Heavens rage. A new God has emerged." << endl;
     cout << "Their name is " << in_name << " of the attribute " << in_attribute << endl;
     cout << " of the attack " << attack << " of the health " << health << " and the agility " << agility << endl;
@@ -145,7 +145,7 @@ void Tournament::deleteAll(Gods *node){
 }
 void Tournament::readFile(){
     string data, temp;
-    string name, attribute, health, attack, agility;
+    string name, attribute, health, attack, agility, speech;
     ifstream inFile("gods.txt");
     while(getline(inFile, data)){
         stringstream SS(data);
@@ -154,7 +154,8 @@ void Tournament::readFile(){
         getline(SS, health, ',');
         getline(SS, attack, ',');
         getline(SS, agility, ',');
-        InsertGod(name, attribute, atoi(health.c_str()), atoi(attack.c_str()) , atoi(agility.c_str()));
+        getline(SS, speech, ',');
+        InsertGod(name, attribute, atoi(health.c_str()), atoi(attack.c_str()) , atoi(agility.c_str()), atoi(speech.c_str()));
     }
 }
 void Tournament::findGodHistory(string name, Gods* temp){
@@ -164,13 +165,15 @@ void Tournament::findGodHistory(string name, Gods* temp){
             if(godList[i]->name == name){
                 player = godList[i];
                 cout << godList[i]->name << " Attribute: " << godList[i]->attribute << " Health: " << godList[i]->health << " Attack: " << godList[i]->attack << " Agility: " << godList[i]->agility << endl;
-                cout << "This Deity has not fought yet. Start a new tournament to see what this immortal is made of!" << endl;
+                cout << "Winning Speech: " << godList[i]->speech << endl;
+                cout << "This Deity has not fought yet. Start a new tournament to see what this immortal is made out of!" << endl;
             }
         }
         goto label;
     }
     if(temp->name == name){
         cout << temp->name << " Attribute: " << temp->attribute << " Health: " << temp->health << " Attack: " << temp->attack << " Agility: " << temp->agility << endl;
+        cout << "Winning Speech: " << temp->speech << endl;
         countingKids++;
         while(temp->left != NULL){
             countingKids++;
@@ -313,5 +316,7 @@ void Tournament::runTournament(){
         round++;
     }
     root = godList[0];
+    cout << root->name << " is the supreme deity" << endl;
+    cout << root->name << ": " << root->speech << endl;
     InitializeTourny();
 }
