@@ -1,8 +1,8 @@
-Zeus,lightning,100,50,50
-Poseidon,water,100,50,50
-Hades,fire,100,50,50
-Thor,lightning,100,50,50
-Loki,fire,100,50,50
-Shiva,earth,100,50,50
-Aphrodite,water,100,50,50
-Ares,earth,100,50,50
+Zeus,lightning,100,50,50,By my beard you look just like your mother!
+Poseidon,water,100,50,50,Fishtop or fishbottom?
+Hades,fire,100,50,50,Hell is where the party is
+Thor,lightning,100,50,50,Where is Keira Knightley
+Loki,fire,100,50,50,I have a bridge to sell you
+Shiva,earth,100,50,50,Extra arms do come in handy
+Aphrodite,water,100,50,50,You've just been friendzoned
+Ares,earth,100,50,50,I'm here to kick ass and chew bubblegum and I'm all out of ass. I mean bubblegum
