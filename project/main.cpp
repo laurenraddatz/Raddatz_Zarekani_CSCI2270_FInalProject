@@ -68,7 +68,7 @@ int main()
             cout << "What God?" << endl;
             getline(cin, name);
             if(newTournament.findGod(name)){
-                newTournament.findGodHistory(name, newTournament.root);
+                newTournament.findGodHistory(name, newTournament.getRoot());
             }else{
                 cout << "Enter valid Deity" << endl;
             }
