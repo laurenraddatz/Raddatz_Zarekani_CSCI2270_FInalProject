@@ -44,12 +44,13 @@ class Tournament
         void InitializeTourny();
         void findGodHistory(std:: string in_name, Gods* winner);
         Gods *player;
-        Gods *root;
+        
     protected:
 
     private:
         int godSize;
         Gods *godList[8];
+        Gods *root;
         int round = 1;
 };
 
