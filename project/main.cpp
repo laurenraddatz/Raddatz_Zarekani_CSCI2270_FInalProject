@@ -14,7 +14,7 @@ int main()
     string name, attribute, health, attack, agility, dominant, inferior;
     cout << "Welcome to the Divine Tournament" << endl;
     cout << "Immortal blood will be shed today" << endl;
-     while(userInput != "3"){
+     while(true){
         cout << "======Main Menu======" << endl;
         cout << "1. Start New Tournament" << endl;
         cout << "2. Find God" << endl;
@@ -73,6 +73,10 @@ int main()
                 cout << "Enter valid Deity" << endl;
             }
         }
+        else if(userInput == "3"){
+            cout << "Thanks for playing!" << endl;
+            return 0;
+        }
      }
-    return 0;
+    
 }
