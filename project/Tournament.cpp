@@ -7,17 +7,7 @@
 #include <ctime> //for srand
 using namespace std;
 
-/**
- * Function prototype:
- * Tournament::Tournament();
- *
- * Function description:
- * Constructor of Tournament
- *
- * Pre-conditions: x
- * Post-conditions: tx
- */
-
+// constructor
 Tournament::Tournament(){
     InitializeTourny();
     srand(time(NULL)); //for random number generator
@@ -26,6 +16,7 @@ Tournament::Tournament(){
 Tournament::~Tournament(){
     // dtor
 }
+
 /**
  * Function prototype:
  * Gods* Tournament::Fight(Gods *a, Gods *b);
@@ -397,6 +388,7 @@ Gods* Tournament::manualFight(Gods *a, Gods *b){
             cout << "Your Attack Missed!" << endl;
         }
         turn++;
+        cout << "Your health: " << playerChar.health << "\t Opponent's health: " << fighterB.health << endl;
     }
     if(playerChar.health > fighterB.health){
         return a;
