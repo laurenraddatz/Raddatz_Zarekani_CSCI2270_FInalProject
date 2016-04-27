@@ -92,7 +92,7 @@ int main()
                     newTournament.printGods();
                 }else{
                     cout << "Gods in this Tier:" << endl;
-                    newTournament.printGods(stoi(tier), newTournament.getRoot());
+                    newTournament.printGods(atoi(tier.c_str()), newTournament.getRoot());
                 }
             }
         }else if(userInput == "4"){
