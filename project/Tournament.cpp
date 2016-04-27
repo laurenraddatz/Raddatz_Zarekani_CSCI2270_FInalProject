@@ -7,15 +7,35 @@
 #include <ctime> //for srand
 using namespace std;
 
+/**
+ * Function prototype:
+ * Tournament::Tournament();
+ *
+ * Function description:
+ * Constructor of Tournament
+ *
+ * Pre-conditions: x
+ * Post-conditions: tx
+ */
+
 Tournament::Tournament(){
     InitializeTourny();
     srand(time(NULL)); //for random number generator
-
 }
 
 Tournament::~Tournament(){
-
+    // dtor
 }
+/**
+ * Function prototype:
+ * Gods* Tournament::Fight(Gods *a, Gods *b);
+ *
+ * Function description:
+ * Performs the "fight", modifying the health of each Gods* object based on its stats, attribute, and a randomized modifier
+ *
+ * Pre-conditions: two valid Gods* objects of health >= 0
+ * Post-conditions: the single Gods* object that has health >= 0 (or the one with greatest health if both < 0) after the algorithm runs
+ */
 Gods* Tournament::Fight(Gods *a, Gods *b){
     Gods fighterA = *a;
     Gods fighterB = *b;
@@ -48,9 +68,31 @@ Gods* Tournament::Fight(Gods *a, Gods *b){
         return b;
     }
 }
+
+/**
+ * Function prototype:
+ * void Tournament::deleteGod(int index)
+ *
+ * Function description:
+ * Nullifies a Gods* object in the godList array
+ *
+ * Pre-conditions: int index, index must be >= 0 and < 8
+ * Post-conditions: returns nothing, godList element nullified
+ */
 void Tournament::deleteGod(int index){
     godList[index] = NULL;
 }
+
+/**
+ * Function prototype:
+ * bool Tournament::findGod(std::string)
+ *
+ * Function description:
+ * Searches the godList array for a Gods* object with the same name as the input string
+ *
+ * Pre-conditions: valid string
+ * Post-conditions: returns true or false, true if the string matches a godList object name, false if doesn't
+ */
 bool Tournament::findGod(std::string in_name){
     for(int i = 0; i < godSize; i++){
         if(godList[i]->name == in_name){
@@ -60,6 +102,17 @@ bool Tournament::findGod(std::string in_name){
     }
     return false;
 }
+
+/**
+ * Function prototype:
+ * void Tournament::InsertGod(std::string in_name, std::string in_attribute, int in_health, int in_attack, int in_agility, std::string in_speech)
+ *
+ * Function description:
+ * With the given parameters, the function creates a Gods* object and places it at a random position in the godList array
+ *
+ * Pre-conditions: all inputs must be valid and not NULL
+ * Post-conditions: returns nothing, creates a new Gods* object 
+ */
 void Tournament::InsertGod(std::string in_name, std::string in_attribute, int in_health, int in_attack, int in_agility, std::string in_speech){
     Gods *newGod = new Gods(in_name, in_attribute, in_health, in_attack, in_agility, in_speech);
         int initialI = rand() % 8;
@@ -73,6 +126,18 @@ void Tournament::InsertGod(std::string in_name, std::string in_attribute, int in
             }
     }
 }
+
+/**
+ * Function prototype:
+ * void Tournament::makeGod(string in_name, string in_attribute, string in_dominantStat, string in_inferiorStat, string speech)
+ *
+ * Function description:
+ * This function acts when the player decides to create their own God. It takes the valid inputs chosen by the player, and creates a 
+ * new Gods* object from it.
+ *
+ * Pre-conditions: all inputs must be valid and not NULL
+ * Post-conditions: returns nothing, creates a new Gods* object. Prints out a statement about their God's stats.
+ */
 void Tournament::makeGod(string in_name, string in_attribute, string in_dominantStat, string in_inferiorStat, string speech){
     deleteGod(rand() % 10);
     int agility, health, attack;
@@ -108,13 +173,31 @@ void Tournament::makeGod(string in_name, string in_attribute, string in_dominant
 
 }
 
-// Returns the root node for use in functions
+/**
+ * Function prototype:
+ * Gods* Tournament::getRoot()
+ *
+ * Function description:
+ * Returns the root of the tree, as it is private in the class, for use in the driver.
+ *
+ * Pre-conditions: none
+ * Post-conditions: returns the root object
+ */
 Gods* Tournament::getRoot()
 {
     return root;
 }
 
-// the user chooses which tier to print (choice)
+/**
+ * Function prototype:
+ * Gods* Tournament::printGods(int choice)
+ *
+ * Function description:
+ * Traverses the tree and prints out the Gods in the chosen "tier" of the Touranment (tier 1 is all of the Gods, tier 4 is the winner)
+ *
+ * Pre-conditions: an int with value 1, 2, 3, or 4
+ * Post-conditions: returns nothing, prints out the names of the Gods of the chosen tier
+ */
 void Tournament::printGods(int choice){
     cout << "Gods in this tier:" << endl;
     if(choice == 1){
@@ -134,7 +217,16 @@ void Tournament::printGods(int choice){
     }
 }
 
-// Clear the tournament bracket, input the root node
+/**
+ * Function prototype:
+ * Gods* Tournament::deleteAll(Gods *node)
+ *
+ * Function description:
+ * Deletes all nodes in the tree recursively
+ *
+ * Pre-conditions: *node must be the root of the tree
+ * Post-conditions: returns nothing, deletes all nodes
+ */
 void Tournament::deleteAll(Gods *node){
     if(node->left != NULL)
         deleteAll(node->left);
@@ -143,6 +235,18 @@ void Tournament::deleteAll(Gods *node){
     //cout<<"Deleting: "<<node->name<<endl;
     delete node;
 }
+
+/**
+ * Function prototype:
+ * Gods* Tournament::readFile()
+ *
+ * Function description:
+ * Reads the gods.txt file, and uses the InsertGod() function to make the Gods* objects described in the text file, and place them 
+ * in the godList array
+ *
+ * Pre-conditions: gods.txt must exist and be in the same path as Tournament.cpp
+ * Post-conditions: returns nothing, uses InsertGod() to create *Gods objects
+ */
 void Tournament::readFile(){
     string data, temp;
     string name, attribute, health, attack, agility, speech;
@@ -158,6 +262,17 @@ void Tournament::readFile(){
         InsertGod(name, attribute, atoi(health.c_str()), atoi(attack.c_str()) , atoi(agility.c_str()), atoi(speech.c_str()));
     }
 }
+
+/**
+ * Function prototype:
+ * Gods* Tournament::findGodHistory(string name, Gods* temp)
+ *
+ * Function description:
+ * Recursively searches the tree for a Gods* object with the name matching the input, prints the information and ranking of the God if it is found
+ *
+ * Pre-conditions: Gods *temp must be the root node of the tree, string name bust be a valid string
+ * Post-conditions: returns nothing, prints information about the God if it is found
+ */
 void Tournament::findGodHistory(string name, Gods* temp){
     int countingKids = 0;
     if(temp == NULL){
@@ -201,6 +316,18 @@ void Tournament::findGodHistory(string name, Gods* temp){
     }
     label:;
 }
+
+/**
+ * Function prototype:
+ * Gods* Tournament::InitializeTourny()
+ *
+ * Function description:
+ * Initializes the godList array elements to NULL, so that the tournament can be called consecutively.
+ * It also calls readFile() to fill and fully initialize the array.
+ *
+ * Pre-conditions: none
+ * Post-conditions: returns nothing
+ */
 void Tournament::InitializeTourny(){
     godSize = 8;
     *godList = new Gods[godSize];
@@ -209,6 +336,19 @@ void Tournament::InitializeTourny(){
     }
     readFile(); //reshuffle list
 }
+
+/**
+ * Function prototype:
+ * Gods* Tournament::manualFight(Gods *a, Gods *b)
+ *
+ * Function description:
+ * When the player chooses to play, they are given options to perform for each move. Based on their move selection and a random
+ * modifier, their stats are altered. The function then determines whether each fighter's attack hits or misses, and then 
+ * changes the fighters' health stats accordingly. This runs until one of the fighters's health drops below 0.
+ *
+ * Pre-conditions: two valid Gods* objects, one being the player's God character
+ * Post-conditions: returns the Gods* object that wins the match (the object with health > 0)
+ */
 Gods* Tournament::manualFight(Gods *a, Gods *b){
     cout << "Take Up Your Arms" << endl;
     cout << "It's Time to Earn Your Divinity" << endl;
@@ -265,6 +405,19 @@ Gods* Tournament::manualFight(Gods *a, Gods *b){
         return b;
     }
 }
+
+/**
+ * Function prototype:
+ * Gods* Tournament::runTournament()
+ *
+ * Function description:
+ * This function runs each fight, and builds the tree from the bottom up. For every two nodes, the Fight() or manualFight() functions
+ * is used to determine a winner. The winner is then cloned and set to be the parent of the two nodes, and the process continues
+ * until one node is left (the root of the resulting binary tree).
+ *
+ * Pre-conditions: none
+ * Post-conditions: returns nothing, builds the binary tree for the overall tournament
+ */
 void Tournament::runTournament(){
     int countMatch = 0;
     round = 1;
