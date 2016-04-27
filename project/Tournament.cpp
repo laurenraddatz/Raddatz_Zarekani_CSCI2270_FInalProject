@@ -179,13 +179,13 @@ Gods* Tournament::getRoot()
 
 /**
  * Function prototype:
- * Gods* Tournament::printGods(int choice)
+ * Gods* Tournament::printGods()
  *
  * Function description:
- * Traverses the tree and prints out the Gods in the chosen "tier" of the Touranment (tier 1 is all of the Gods, tier 4 is the winner)
+ * Prints out the members of the godList array
  *
- * Pre-conditions: an int with value 1, 2, 3, or 4
- * Post-conditions: returns nothing, prints out the names of the Gods of the chosen tier
+ * Pre-conditions: none, InsertGod() must be called first, otherwise godList elements will be NULL
+ * Post-conditions: returns nothing, prints out the names of the Gods* objects in the array
  */
 void Tournament::printGods(){
     cout << "Gods in this tier:" << endl;
@@ -193,6 +193,17 @@ void Tournament::printGods(){
             cout << godList[i]->name << " (" << godList[i]->attribute << ")" << endl;
         }
 }
+
+/**
+ * Function prototype:
+ * Gods* Tournament::printGods(int tier_choice, Gods* temp)
+ *
+ * Function description:
+ * Traverses the tree recursively and prints out the Gods in the chosen "tier" of the Touranment (tier 1 is all of the Gods, tier 4 is the winner)
+ *
+ * Pre-conditions: an int with value 1, 2, 3, or 4, and the root node
+ * Post-conditions: returns nothing, prints out the names of the Gods of the chosen tier
+ */
 void Tournament::printGods(int tier_choice, Gods* temp){
     if (temp->left != NULL){
         printGods(tier_choice,temp->left);
