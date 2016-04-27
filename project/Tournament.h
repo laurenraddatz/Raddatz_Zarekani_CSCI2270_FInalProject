@@ -5,7 +5,7 @@
 
 struct Gods{
 	std::string name, attribute, speech;
-	int health, attack, agility;
+	int health, attack, agility, tier;
 	Gods  *parent, *left, *right;
 
 	Gods(){};
@@ -20,6 +20,7 @@ struct Gods{
 		parent = NULL;
         	left = NULL;
         	right = NULL;
+        	tier = 1;
 	}
 
 };
@@ -31,7 +32,8 @@ class Tournament
         ~Tournament();
         void InsertGod(std::string in_name, std::string in_attribute, int in_health, int in_attack, int in_agility, std::string in_speech);
         Gods *Fight(Gods *a, Gods *b);
-        void printGods(int tier_choice);
+        void printGods(int tier_choice, Gods* temp);
+        void printGods();
         bool findGod(std::string in_name);
         void playerControl(Gods *a, Gods *b);
         void deleteGod(int index);
