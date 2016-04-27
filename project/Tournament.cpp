@@ -250,7 +250,7 @@ void Tournament::readFile(){
         getline(SS, attack, ',');
         getline(SS, agility, ',');
         getline(SS, speech, ',');
-        InsertGod(name, attribute, atoi(health.c_str()), atoi(attack.c_str()) , atoi(agility.c_str()), atoi(speech.c_str()));
+        InsertGod(name, attribute, atoi(health.c_str()), atoi(attack.c_str()) , atoi(agility.c_str()), speech);
     }
 }
 
