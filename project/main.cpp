@@ -12,8 +12,10 @@ int main()
     bool found = false;
     string userInput, userInput2;
     string name, attribute, health, attack, agility, dominant, inferior, speech, tier;
-    cout << "~~~   Welcome to the Divine Tournament!    ~~~" << endl;
-    cout << "~~~   Immortal blood will be shed today... ~~~ \n" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "~~~   Welcome to the Divine Tournament!     ~~~" << endl;
+    cout << "~~~   Immortal blood will be shed today...  ~~~" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << endl;
      while(true){
         openingMenu:;
         cout << "======Main Menu======" << endl;
