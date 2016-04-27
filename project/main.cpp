@@ -19,7 +19,8 @@ int main()
         cout << "======Main Menu======" << endl;
         cout << "1. Start New Tournament" << endl;
         cout << "2. Find God" << endl;
-        cout << "3. Quit" << endl;
+        cout << "3. Print Gods" << endl;
+        cout << "4. Quit" << endl;
         getline(cin, userInput);
 
         if(userInput == "1"){
@@ -79,8 +80,22 @@ int main()
             }else{
                 cout << "Enter valid Deity" << endl;
             }
-        }
-        else if(userInput == "3"){
+        }else if(userInput == "3"){
+            tier = "";
+            while(tier != "1" and tier != "2" and tier != "3" and tier != "4"){
+                cout << "What Tier Would you Like to See? 1-4" << endl;
+                getline(cin, tier);
+                if(tier != "1" and !newTournament.getRoot()){
+                    cout << "You Must First Start a Tournament to See Past Tier 1!" << endl;
+                    tier = "";
+                }else if(!newTournament.getRoot()){
+                    newTournament.printGods();
+                }else{
+                    cout << "Gods in this Tier:" << endl;
+                    newTournament.printGods(stoi(tier), newTournament.getRoot());
+                }
+            }
+        }else if(userInput == "4"){
             cout << "Thanks for playing!" << endl;
             return 0;
         }
