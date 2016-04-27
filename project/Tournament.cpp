@@ -342,7 +342,7 @@ void Tournament::InitializeTourny(){
  */
 Gods* Tournament::manualFight(Gods *a, Gods *b){
     cout << "Take Up Your Arms" << endl;
-    cout << "It's Time to Earn Your Divinity" << endl;
+    cout << "It's Time to Earn Your Divinity \n" << endl;
     Gods playerChar = *a;
     Gods fighterB = *b;
     string userInput;
@@ -374,7 +374,7 @@ Gods* Tournament::manualFight(Gods *a, Gods *b){
         }
 
         modifierB = (rand() % 100)/100.00; //percentage
-        cout << modifierB << " " << playerModifierAgility << endl;
+        //cout << modifierB << " " << playerModifierAgility << endl;
         if(fighterB.agility * modifierB - playerChar.agility * playerModifierAgility > 5){ //whether the attack misses or hits
             playerChar.health = playerChar.health - ((fighterB.attack * modifierB) * (1.00 - playerModifierHealth));
             cout << "You took " << ((fighterB.attack * modifierB) * (1.00 - playerModifierHealth)) << " damage" << endl;
@@ -388,7 +388,7 @@ Gods* Tournament::manualFight(Gods *a, Gods *b){
             cout << "Your Attack Missed!" << endl;
         }
         turn++;
-        cout << "Your health: " << playerChar.health << "\t Opponent's health: " << fighterB.health << endl;
+        cout << "Your health: " << playerChar.health << "\t \t Opponent's health: " << fighterB.health << endl;
     }
     if(playerChar.health > fighterB.health){
         return a;
