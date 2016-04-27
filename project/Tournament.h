@@ -52,7 +52,7 @@ class Tournament
     private:
         int godSize;
         Gods *godList[8];
-        Gods *root;
+        Gods *root = NULL;
         int round;
 };
 
