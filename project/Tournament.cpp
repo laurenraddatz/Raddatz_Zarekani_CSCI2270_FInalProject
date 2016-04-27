@@ -189,22 +189,21 @@ Gods* Tournament::getRoot()
  * Pre-conditions: an int with value 1, 2, 3, or 4
  * Post-conditions: returns nothing, prints out the names of the Gods of the chosen tier
  */
-void Tournament::printGods(int choice){
+void Tournament::printGods(){
     cout << "Gods in this tier:" << endl;
-    if(choice == 1){
         for(int i = 0; i < 8; i++){
             cout << godList[i]->name << endl;
         }
+}
+void Tournament::printGods(int tier_choice, Gods* temp){
+    if (temp->left != NULL){
+        printGods(tier_choice,temp->left);
     }
-    else if(choice == 2){
-        for(int i = 0; i < 4; i++){
-    //        cout << godList2[i]->name << endl;
-        }
+    if(temp->tier == tier_choice){
+        cout << temp->name << endl;
     }
-    else if(choice == 3){
-        for(int i = 0; i < 2; i++){
-   //         cout << godList3[i]->name << endl;
-        }
+     if (temp->right != NULL){
+        printGods(tier_choice,temp->right);
     }
 }
 
