@@ -383,6 +383,18 @@ Gods* Tournament::manualFight(Gods *a, Gods *b){
 
         modifierB = (rand() % 100)/100.00; //percentage
         //cout << modifierB << " " << playerModifierAgility << endl;
+        if(playerChar.attribute != "normal" and fighterB.attribute != "normal"){
+            // case where fighterA gets advantage
+            if((playerChar.attribute == "water" and fighterB.attribute == "fire") or (playerChar.attribute == "lightning" and fighterB.attribute == "water") or (playerChar.attribute == "earth" and fighterB.attribute == "lightning") or (playerChar.attribute == "fire" and fighterB.attribute == "earth")){
+                playerModifierAttack += .2;
+                modifierB -= .2;
+            }
+            // case where fighterB gets advantage
+            else if((fighterB.attribute == "water" and playerChar.attribute == "fire") or (fighterB.attribute == "lightning" and playerChar.attribute == "water") or (fighterB.attribute == "earth" and playerChar.attribute == "lightning") or (fighterB.attribute == "fire" and playerChar.attribute == "earth")){
+                modifierB += .2;
+                playerModifierAgility -= .2;
+            }
+        }
         if(fighterB.agility * modifierB - playerChar.agility * playerModifierAgility > 5){ //whether the attack misses or hits
             playerChar.health = playerChar.health - ((fighterB.attack * modifierB) * (1.00 - playerModifierHealth));
             cout << "You took " << ((fighterB.attack * modifierB) * (1.00 - playerModifierHealth)) << " damage" << endl;
