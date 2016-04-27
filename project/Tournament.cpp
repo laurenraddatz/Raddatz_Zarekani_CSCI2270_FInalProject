@@ -345,7 +345,7 @@ Gods* Tournament::manualFight(Gods *a, Gods *b){
     Gods playerChar = *a;
     Gods fighterB = *b;
     string userInput;
-    int turn = 0;
+    int turn = 1;
     float playerModifierAgility, playerModifierAttack, playerModifierHealth, modifierB;
     while(playerChar.health >= 0 and fighterB.health >= 0){ //both Gods still standing
         userInput = "";
