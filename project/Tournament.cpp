@@ -423,7 +423,7 @@ void Tournament::runTournament(){
         }
         godSize = godSize / 2; //half godSize for the next tier
         *godList = new Gods[godSize];
-        cout << "+++Round " << round << endl;
+        cout << "\n+++Round " << round << "\n" << endl;
         countMatch = 0; //we start the following loop at match 0
         for (int i = 0; i < godSize*2; i = i + 2){ //loops through each match of the tier
             winner = new Gods();
