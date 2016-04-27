@@ -192,7 +192,7 @@ Gods* Tournament::getRoot()
 void Tournament::printGods(){
     cout << "Gods in this tier:" << endl;
         for(int i = 0; i < 8; i++){
-            cout << godList[i]->name << endl;
+            cout << godList[i]->name << " (" << godList[i]->attribute << ")" << endl;
         }
 }
 void Tournament::printGods(int tier_choice, Gods* temp){
