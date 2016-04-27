@@ -157,7 +157,7 @@ void Tournament::makeGod(string in_name, string in_attribute, string in_dominant
         attack = rand() % 50 + 50;
     }
     InsertGod(in_name, in_attribute, health, attack, agility, speech);
-    cout << "The Earth trembles, the air burns, and the Heavens rage. A new God has emerged." << endl;
+    cout << "\nThe Earth trembles, the air burns, and the Heavens rage. A new God has emerged." << endl;
     cout << "Their name is " << in_name << " with the attribute " << in_attribute << "." << endl;
     cout << "Stats: \t  attack: " << attack << "\t  health: " << health << " \t  agility: " << agility << endl;
 }
