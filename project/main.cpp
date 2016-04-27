@@ -12,8 +12,8 @@ int main()
     bool found = false;
     string userInput, userInput2;
     string name, attribute, health, attack, agility, dominant, inferior, speech, tier;
-    cout << "Welcome to the Divine Tournament" << endl;
-    cout << "Immortal blood will be shed today" << endl;
+    cout << "~~~   Welcome to the Divine Tournament!    ~~~" << endl;
+    cout << "~~~   Immortal blood will be shed today... ~~~ \n" << endl;
      while(true){
         openingMenu:;
         cout << "======Main Menu======" << endl;
@@ -31,7 +31,7 @@ int main()
             cout << "4. Go Back" << endl;
             getline(cin, userInput2);
             if(userInput2 == "2"){ //make god
-                cout << "Choose Your God's Name" << endl;
+                cout << "What would you like to name your God?" << endl;
                 getline(cin, name);
                 attribute = "";
                 while (attribute != "normal" and attribute != "lightning" and attribute != "fire" and attribute != "water" and attribute != "earth" ){ //make sure player choses available attribute
@@ -45,25 +45,25 @@ int main()
                 }
                 inferior = "";
                 while (inferior != "attack" and inferior != "health" and inferior != "agility"){ //make sure player choses available stat
-                    cout << "Choose Your God's inferior stat (attack, health, or agility). Your inferior stat must be different than your dominant stat." << endl;
+                    cout << "Choose Your God's inferior stat (attack, health, or agility)" << endl;
                     getline(cin, inferior);
                     while(inferior==dominant){
-                        cout << "Your dominant and inferior stats are the same. Please choose a different inferior stat (attack, health, or agility)" << endl;
+                        cout << "Your dominant and inferior stats cannot be the same. Please choose a different inferior stat (attack, health, or agility)" << endl;
                         getline(cin, dominant);
                     }
                 }
-                cout << "Finally , choose your God's winning speech" << endl;
+                cout << "Finally, write your God's winning speech" << endl;
                 getline(cin, speech);
                 newTournament.makeGod(name, attribute, dominant, inferior, speech);                
             }else if(userInput2 == "1"){ //choose god
                 newTournament.printGods();
                 while(found == false){
-                    cout << "Choose your Champion" << endl;
+                    cout << "\nChoose your Champion" << endl;
                     getline(cin, name);
                     found = newTournament.findGod(name);
                 }
                 found = false; //reset found
-                cout << "You have chosen " << name << endl;
+                cout << "You have chosen: " << name << endl;
                 newTournament.runTournament();
 
             }else if(userInput2 == "3"){
@@ -73,17 +73,17 @@ int main()
                 goto openingMenu;
             }
         }else if(userInput == "2"){
-            cout << "What God?" << endl;
+            cout << "Which God are you looking for?" << endl;
             getline(cin, name);
             if(newTournament.findGod(name)){
                 newTournament.findGodHistory(name, newTournament.getRoot());
             }else{
-                cout << "Enter valid Deity" << endl;
+                cout << "Please enter a valid Deity." << endl;
             }
         }else if(userInput == "3"){
             tier = "";
             while(tier != "1" and tier != "2" and tier != "3" and tier != "4"){
-                cout << "What Tier Would you Like to See? 1-4" << endl;
+                cout << "Which Tier Would you Like to See? 1-4" << endl;
                 getline(cin, tier);
                 if(tier != "1" and !newTournament.getRoot()){
                     cout << "You Must First Start a Tournament to See Past Tier 1!" << endl;
