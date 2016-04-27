@@ -68,7 +68,6 @@ int main()
             }else if(userInput2 == "3"){
                 newTournament.player = NULL;
                 newTournament.runTournament();
-            }        
             }else if(userInput2 == "4"){
                 goto openingMenu;
             }
