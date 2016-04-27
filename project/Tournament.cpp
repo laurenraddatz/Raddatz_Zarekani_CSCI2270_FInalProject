@@ -158,10 +158,8 @@ void Tournament::makeGod(string in_name, string in_attribute, string in_dominant
     }
     InsertGod(in_name, in_attribute, health, attack, agility, speech);
     cout << "The Earth trembles, the air burns, and the Heavens rage. A new God has emerged." << endl;
-    cout << "Their name is " << in_name << " of the attribute " << in_attribute << endl;
-    cout << " of the attack " << attack << " of the health " << health << " and the agility " << agility << endl;
-
-
+    cout << "Their name is " << in_name << " with the attribute " << in_attribute << "." << endl;
+    cout << "Stats: \t  attack: " << attack << "\t  health: " << health << " \t  agility: " << agility << endl;
 }
 
 /**
@@ -269,7 +267,7 @@ void Tournament::findGodHistory(string name, Gods* temp){
         for(int i = 0; i < godSize; i++){
             if(godList[i]->name == name){
                 player = godList[i];
-                cout << godList[i]->name << " Attribute: " << godList[i]->attribute << " Health: " << godList[i]->health << " Attack: " << godList[i]->attack << " Agility: " << godList[i]->agility << endl;
+                cout << godList[i]->name << " Attribute: " << godList[i]->attribute << " \t Health: " << godList[i]->health << " \t Attack: " << godList[i]->attack << " Agility: " << godList[i]->agility << endl;
                 cout << "Winning Speech: " << godList[i]->speech << endl;
                 cout << "This Deity has not fought yet. Start a new tournament to see what this immortal is made out of!" << endl;
             }
@@ -277,7 +275,7 @@ void Tournament::findGodHistory(string name, Gods* temp){
         goto label;
     }
     if(temp->name == name){
-        cout << temp->name << " Attribute: " << temp->attribute << " Health: " << temp->health << " Attack: " << temp->attack << " Agility: " << temp->agility << endl;
+        cout << temp->name << " Attribute: " << temp->attribute << " \t Health: " << temp->health << " \t Attack: " << temp->attack << " \t Agility: " << temp->agility << endl;
         cout << "Winning Speech: " << temp->speech << endl;
         countingKids++;
         while(temp->left != NULL){
@@ -340,7 +338,7 @@ void Tournament::InitializeTourny(){
  * Post-conditions: returns the Gods* object that wins the match (the object with health > 0)
  */
 Gods* Tournament::manualFight(Gods *a, Gods *b){
-    cout << "Take Up Your Arms" << endl;
+    cout << "\nTake Up Your Arms" << endl;
     cout << "It's Time to Earn Your Divinity \n" << endl;
     Gods playerChar = *a;
     Gods fighterB = *b;
@@ -433,6 +431,7 @@ void Tournament::runTournament(){
                 *winner = *Fight(godListTemp[i],godListTemp[i+1]); //create a clone of the winning God set to a new location
                 cout << godListTemp[i]->name << " vs " << godListTemp[i+1]->name << endl;
                 cout << winner->name << " is the winner" << endl;
+                cout << "----------" << endl;
                 winner->tier = winner->tier + 1; //for printGods
                 winner->left = godListTemp[i];
                 godListTemp[i]->parent = winner;
@@ -450,6 +449,7 @@ void Tournament::runTournament(){
                     player = winner;
                 }                
                 cout << winner->name << " is the winner" << endl;
+                cout << "----------" << endl;
                 winner->left = godListTemp[i];
                 godListTemp[i]->parent = winner;
                 winner->right = godListTemp[i+1];
@@ -461,7 +461,7 @@ void Tournament::runTournament(){
         round++;
     }
     root = godList[0];
-    cout << root->name << " is the supreme deity" << endl;
+    cout << root->name << " is the supreme deity!" << endl;
     cout << root->name << ": " << root->speech << endl;
     InitializeTourny();
 }
