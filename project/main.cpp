@@ -56,7 +56,7 @@ int main()
                 getline(cin, speech);
                 newTournament.makeGod(name, attribute, dominant, inferior, speech);                
             }else if(userInput2 == "1"){ //choose god
-                newTournament.printGods(1);
+                newTournament.printGods();
                 while(found == false){
                     cout << "Choose your Champion" << endl;
                     getline(cin, name);
