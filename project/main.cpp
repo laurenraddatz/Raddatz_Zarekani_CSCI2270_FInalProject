@@ -23,6 +23,7 @@ int main()
         getline(cin, userInput);
 
         if(userInput == "1"){
+            cout << "================" << endl;
             cout << "1. Choose a God" << endl;
             cout << "2. Create a God" << endl;
             cout << "3. Join the Audience" << endl;
