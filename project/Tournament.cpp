@@ -433,6 +433,7 @@ void Tournament::runTournament(){
                 *winner = *Fight(godListTemp[i],godListTemp[i+1]); //create a clone of the winning God set to a new location
                 cout << godListTemp[i]->name << " vs " << godListTemp[i+1]->name << endl;
                 cout << winner->name << " is the winner" << endl;
+                winner->tier = winner->tier + 1; //for printGods
                 winner->left = godListTemp[i];
                 godListTemp[i]->parent = winner;
                 winner->right = godListTemp[i+1];
