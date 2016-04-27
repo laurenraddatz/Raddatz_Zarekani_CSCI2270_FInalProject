@@ -396,7 +396,7 @@ Gods* Tournament::manualFight(Gods *a, Gods *b){
             cout << "Your Attack Missed!" << endl;
         }
         turn++;
-        cout << "Your health: " << playerChar.health << "\t \t Opponent's health: " << fighterB.health << endl;
+        cout << "Your health: " << playerChar.health << "\t \t Enemy's health: " << fighterB.health << endl;
     }
     if(playerChar.health > fighterB.health){
         return a;
@@ -473,6 +473,6 @@ void Tournament::runTournament(){
     }
     root = godList[0];
     cout << root->name << " is the supreme deity!" << endl;
-    cout << root->name << ": " << root->speech << endl;
+    cout << root->name << ": " << root->speech << "\n" << endl;
     InitializeTourny();
 }
