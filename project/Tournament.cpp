@@ -250,6 +250,9 @@ void Tournament::readFile(){
     string data, temp;
     string name, attribute, health, attack, agility, speech;
     ifstream inFile("gods.txt");
+   if (!inFile.is_open()){
+        cout << "File did not successfully open" << endl;
+    }
     while(getline(inFile, data)){
         stringstream SS(data);
         getline(SS, name, ',');
